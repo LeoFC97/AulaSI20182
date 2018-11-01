@@ -16,19 +16,18 @@
                 </f:facet>
 
                 <p:outputLabel id="lblNome" for="nome" value="Nome: "/>
-                <p:inputText id="nome" value="#{cadastrarClienteBean.nome}" binding="#{cadastrarClienteBean.nomeComp}" >
-                    <p:ajax event="blur" update="nome growl msgNome" process="nome" listener="#{cadastrarClienteBean.verificarNome()}"/>
+                <p:inputText id="nome" value="#{aletarClienteBean.nome}">
                 </p:inputText>
                 <p:message id="msgNome" for ="nome"/>
 
 
                 <p:outputLabel id="lblEmail" for="email" value="Email: "/>
-                <p:inputText id="email" value="#{cadastrarClienteBean.email}">
+                <p:inputText id="email" value="#{aletarClienteBean.email}">
                 </p:inputText>
                 <p:message for ="email"/>
 
                 <p:outputLabel for="tel" value="Telefone:" />
-                <p:inputMask id="tel" value="#{cadastrarClienteBean.tel}" mask="(99) 99999-9999"/>
+                <p:inputMask id="tel" value="#{aletarClienteBean.tel}" mask="(99) 99999-9999"/>
                 <p:message for ="tel"/>
 
                 <p:outputLabel for="sexo" value="Sexo :" />
@@ -39,7 +38,7 @@
                 <p:message for ="sexo"/>
 
                 <p:outputLabel for="escolaridade2" value="Escolaridade: " />
-                <p:selectOneMenu id="escolaridade2" value="#{cadastrarClienteBean.escolaridade}" style="width:125px">
+                <p:selectOneMenu id="escolaridade2" value="#{aletarClienteBean.escolaridade}" style="width:125px">
                     <f:selectItem itemLabel="Selecione" itemValue="" />
                     <f:selectItem itemLabel="Ensino fundamental" itemValue="Ensino fundamental" />
                     <f:selectItem itemLabel="Ensino médio" itemValue="Ensino médio" />
@@ -48,7 +47,7 @@
                 <p:message for ="escolaridade2"/>
 
                 <f:facet name="footer">
-                    <p:commandButton value="Salvar" update="growl" action="#{cadastrarClienteBean.salvar()}"  styleClass="ui-priority-primary" />
+                    <p:commandButton value="Salvar" update="growl" action="#{aletarClienteBean.salvar()}"  styleClass="ui-priority-primary" />
                     <p:commandButton value="Limpar" id="limpar"  />
                 </f:facet>
 
