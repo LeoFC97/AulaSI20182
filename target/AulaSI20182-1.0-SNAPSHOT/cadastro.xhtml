@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl id="growl" showDetail="true"  />  
+            <p:panelGrid columns="3">
+                <f:facet name="header">
+                    <h:outputText value="Cadastrar Cliente" />
+                </f:facet>
+
+                <p:outputLabel id="lblNome" for="nome" value="Nome: "/>
+                <p:inputText id="nome" value="#{cadastrarClienteBean.nome}">
+                    <!--<p:keyFilter regEx="/[a-zA-Z]/i"/> filtro para nao aceitar numeros  -->
+                    <p:ajax event="blur" update="nome growl" process="nome" listener="#{cadastrarClienteBean.verificarNome()}"/>
+                </p:inputText>
+                <p:message for ="nome"/>
+
+
+                <p:outputLabel id="lblEmail" for="email" value="Email: "/>
+                <p:inputText id="email" value="#{cadastrarClienteBean.email}">
+                </p:inputText>
+                <p:message for ="email"/>
+
+                <p:outputLabel for="tel" value="Telefone:" />
+                <p:inputMask id="tel" value="#{cadastrarClienteBean.tel}" mask="(99) 99999-9999"/>
+                <p:message for ="tel"/>
+
+                <p:outputLabel for="sexo" value="Sexo :" />
+                <p:selectOneRadio id="sexo" value="#{cadastrarClienteBean.sexo}">
+                    <f:selectItem itemLabel="Masculino" itemValue="M" />
+                    <f:selectItem itemLabel="Feminino" itemValue="F" />                  
+                </p:selectOneRadio>
+                <p:message for ="sexo"/>
+
+                <p:outputLabel for="escolaridade2" value="Escolaridade: " />
+                <p:selectOneMenu id="escolaridade2" value="#{cadastrarClienteBean.escolaridade}" style="width:125px">
+                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                    <f:selectItem itemLabel="Ensino fundamental" itemValue="Ensino fundamental" />
+                    <f:selectItem itemLabel="Ensino médio" itemValue="Ensino médio" />
+                    <f:selectItem itemLabel="Ensino superior" itemValue="Ensino superior" />
+                </p:selectOneMenu>
+                <p:message for ="escolaridade2"/>
+
+                <f:facet name="footer">
+                    <p:commandButton value="Salvar" update="growl" action="#{cadastrarClienteBean.salvar()}"  styleClass="ui-priority-primary" />
+                    <p:commandButton value="Limpar" id="limpar"  />
+                </f:facet>
+
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
