@@ -5,6 +5,7 @@ import com.mycompany.aulasi20182.model.bd.Repositorio;
 import java.io.Serializable;
 import static java.time.Clock.system;
 import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -13,16 +14,16 @@ import javax.inject.Named;
 @Named     //para a classe ser visualizada  gerenciada pelo jsf
 @ViewScoped
 public class CadastrarClienteBean implements Serializable {
-
+    private UIComponent nomeComp;
     private String nome, email, tel, sexo, escolaridade;
-
+    
     public void verificarNome(){
         System.out.println("entrou na funcao");
         for(ClienteModel cm: repo.getLista()){
             if(cm.getNome().equals(nome))
             {
                 FacesContext.getCurrentInstance()
-                            .addMessage("nome",
+                            .addMessage(nomeComp,
                                     new FacesMessage(
                                     FacesMessage.SEVERITY_ERROR,
                                     "FALHA!",
@@ -31,6 +32,16 @@ public class CadastrarClienteBean implements Serializable {
             }
         }    
     }
+    
+    public UIComponent getNomeComp()
+    {
+        return nomeComp;
+    }
+     public void setNomeComp(UIComponent nomeComp)
+    {
+        this.nomeComp=nomeComp;
+    }
+    
     
     public String getTel() {
         return tel;
