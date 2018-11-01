@@ -22,7 +22,7 @@ public class CadastrarClienteBean implements Serializable {
             if(cm.getNome().equals(nome))
             {
                 FacesContext.getCurrentInstance()
-                            .addMessage(null,
+                            .addMessage("nome",
                                     new FacesMessage(
                                     FacesMessage.SEVERITY_ERROR,
                                     "FALHA!",
