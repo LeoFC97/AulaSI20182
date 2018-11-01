@@ -17,7 +17,7 @@
 
                 <p:outputLabel id="lblNome" for="nome" value="Nome: "/>
                 <p:inputText id="nome" value="#{cadastrarClienteBean.nome}">
-                    <!--<p:keyFilter regEx="/[a-zA-Z]/i"/> filtro para nao aceitar numeros  -->
+                    <p:keyFilter regEx="/[a-zA-Z]/i"/> filtro para nao aceitar numeros
                     <p:ajax event="blur" update="nome growl" process="nome" listener="#{cadastrarClienteBean.verificarNome()}"/>
                 </p:inputText>
                 <p:message for ="nome"/>
