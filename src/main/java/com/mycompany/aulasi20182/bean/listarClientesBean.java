@@ -30,6 +30,18 @@ public class listarClientesBean implements Serializable {
         }
     }
 
+    public String alterar()
+    {
+        if(clienteSelecionado!=null)
+        {
+            return"alterarCliente?nome="+clienteSelecionado.getNome();
+        }
+        else
+        {
+            return"";
+        }
+    }
+    
     public Repositorio getRepo() {
         return repo;
     }
